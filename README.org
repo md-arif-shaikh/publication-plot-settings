@@ -1,0 +1,9 @@
+#+TITLE: Publication quality plot settings for matplotlib
+#+AUTHOR: Md Arif Shaikh
+#+DATE: Saturday 24 April 2021 08:43:53 PM IST
+#+EMAIL: arifshaikh.astro@gmail.com
+
+* About
+  Settings for publication quality plots using matplotlib. The goal
+  here is to get plots consistent with high quality journals.
+
