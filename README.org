@@ -6,4 +6,5 @@
 * About
   Settings for publication quality plots using matplotlib. The goal
   here is to get plots consistent with high quality journals.
-
+* TODO
+  - Better handling of adjusting subplots
