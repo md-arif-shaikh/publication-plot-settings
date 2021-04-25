@@ -6,5 +6,16 @@
 * About
   Settings for publication quality plots using matplotlib. The goal
   here is to get plots consistent with high quality journals.
-* TODO
-  - Better handling of adjusting subplots
+
+  To make sure that we do the following
+  - Save the fig at the actual figure size that would be put in the
+    paper. This would make sure that the fonts and labels are visible
+    and has correct sizes. This would imply that we do not scale the
+    figure in the TeX document. The figure size could in principle vary with
+    journals and the scope of use.
+  - Use a linestyle cycler which would plot different lines
+    with different styles to make sure that they are dintinguished
+    easily.
+  - Use a color cycle with nice colors.
+  - Use appropriate spaces around the plot inside the figure such that
+    no spaces are wasted.

@@ -12,12 +12,8 @@ rc("axes.spines", right=False)
 rc("lines", linewidth=1.25)
 rc("lines", markersize=5)
 
-# Ticks
-rc("xtick", labelsize=8)
-rc("ytick", labelsize=8)
-
 # Legend
-rc("legend", frameon=False)
+rc("legend", frameon=True)
 rc("legend", loc="upper right")
 
 # Grid
@@ -25,7 +21,7 @@ rc("grid", linestyle="solid")
 rc("grid", linewidth=0.5)
 rc("grid", alpha=0.5)
 
-# TeX
+# LaTeX
 rc("text.latex", preamble=r"\usepackage{txfonts}")
 rc("text", usetex=True)
 
@@ -53,29 +49,27 @@ line_style_cycler = cycler(
 
 rc("axes", prop_cycle=d3_catagory10 + line_style_cycler)
 
-# Figure size
-# onecol_width = 4.2519699737097
-# onecol_height = 2.627861962896592
-onecol_width = 3.4  # (Phys Rev)
-twocol_width = 7  # (Phys Rev)
-onecol_height = 3
-# margins
-left_margin = 0.15  # / onecol_width
-right_margin = 0.95  # / onecol_width
-bottom_margin = 0.15  # / onecol_height
-top_margin = 0.95  # / onecol_height
-rc("figure.subplot", bottom=bottom_margin)
-rc("figure.subplot", right=right_margin)
-rc("figure.subplot", left=left_margin)
-rc("figure.subplot", top=top_margin)
-
 
 def set(journal="PRD",
         fig_type="onecol",
         nrows=1,
         ncols=1,
         sharex=False,
-        sharey=False):
+        sharey=False,
+        left=0.15,
+        bottom=0.15,
+        right=0.95,
+        top=0.95,
+        wspace=0.0,
+        hspace=0.0,
+        figsize=None):
+    # Figure size
+    # onecol_width = 4.2519699737097
+    # onecol_height = 2.627861962896592
+    onecol_width = 3.4  # (Phys Rev)
+    twocol_width = 7  # (Phys Rev)
+    onecol_height = 3
+    # margins
     labelsizes = {"PRD": 10.0,
                   "APJ": 8.0,
                   "Presentation": 8.0,
@@ -100,10 +94,21 @@ def set(journal="PRD",
     if fig_type not in fig_types:
         print(f"--- fig_type should be one of {fig_types} ---")
 
-    rc("figure", figsize=figsizes[journal][fig_type])
+    if figsize is None:
+        rc("figure", figsize=figsizes[journal][fig_type])
+    else:
+        rc("figure", figsize=figsize)
     rc("axes", labelsize=labelsizes[journal])
     rc("axes", titlesize=labelsizes[journal])
+    rc("xtick", labelsize=labelsizes[journal])
+    rc("ytick", labelsize=labelsizes[journal])
     rc("legend", fontsize=fontsizes[journal])
+    rc("figure.subplot", bottom=bottom)
+    rc("figure.subplot", right=right)
+    rc("figure.subplot", left=left)
+    rc("figure.subplot", top=top)
+    rc("figure.subplot", wspace=wspace)
+    rc("figure.subplot", hspace=hspace)
 
     fig, ax = plt.subplots(nrows, ncols, sharex=sharex, sharey=sharey)
     return fig, ax
