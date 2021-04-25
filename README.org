@@ -34,4 +34,4 @@
     ax.grid()
     fig.savefig("./figs/PRD.pdf")
   #+END_SRC
-[[./figs/PRD.pdf]]
+[[./figs/PRD.png]]
