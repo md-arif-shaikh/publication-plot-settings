@@ -20,6 +20,8 @@
   - Use appropriate spaces around the plot inside the figure such that
     no spaces are wasted.
 * Examples
+** APS
+   - one column
   #+BEGIN_SRC python
     import numpy as np
     import plotsettings as plts
@@ -32,9 +34,20 @@
     ax.set_ylabel(r"$\sin(\theta + i)$")
     ax.legend(loc="upper left")
     ax.grid()
-    fig.savefig("./figs/PRD.pdf")
+    fig.savefig("../figs/APS.pdf")
   #+END_SRC
-[[./figs/PRD.png]]
+  - two column
+    #+BEGIN_SRC python
+      fig, ax = plts.set("APS", fig_type="twocol", left=0.1)
+      for idx in range(5):
+	  ax.plot(x, np.sin(x + idx), label=r"$i = %.f$" % idx)
+      ax.set_xlabel(r"$\theta$")
+      ax.set_ylabel(r"$\sin(\theta + i)$")
+      ax.legend(loc="upper left")
+      ax.grid()
+      fig.savefig("../figs/APS_twocol.pdf")
+    #+END_SRC
+  - See the pdf [[./examples/APS.pdf][APS]].
 
 * References
   - APS: https://cdn.journals.aps.org/files/styleguide-pr.pdf
