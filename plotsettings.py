@@ -9,7 +9,7 @@ rc("axes.spines", top=False)
 rc("axes.spines", right=False)
 
 # Lines
-rc("lines", linewidth=1.25)
+rc("lines", linewidth=2)
 rc("lines", markersize=5)
 
 # Legend
@@ -40,17 +40,24 @@ dark2 = cycler(
 )
 d3_catagory10 = cycler(
     color=["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
-           "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
+           "#8c564b", "#e377c2", "#7f7f7f"]  # , "#bcbd22", "#17becf"]
 )
+
+# https://jfly.uni-koeln.de/html/manuals/pdf/color_blind.pdf
+easy_colors = cycler(
+    color=["#E69F00", "#56B4E9", "#009E73",
+           "#F0E442", "#0072B2", "#D55E00", "#C979A7", "#000000"]
+)
+
 line_style_cycler = cycler(
-    linestyle=['-', '--', ':', '-.',
-               '-', '--', ':', '-.',
-               '-', '--'])
+    linestyle=['solid', 'dashed', 'dotted', 'dashdot',
+               (0, (3, 1, 1, 1, 1, 1)),
+               (0, (3, 1, 1, 1)),  (0, (5, 1)), (0, (1, 1))])
 
 rc("axes", prop_cycle=d3_catagory10 + line_style_cycler)
 
 
-def set(journal="PRD",
+def set(journal="APS",
         fig_type="onecol",
         nrows=1,
         ncols=1,
@@ -68,23 +75,25 @@ def set(journal="PRD",
     # onecol_height = 2.627861962896592
     # https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-sizing
     # https://www.springer.com/authors/manuscript+guidelines?SGWID=0-40162-6-1414342-0
-    cm_to_inch = 1/2.54
-    onecol_width = 9 * cm_to_inch
-    twocol_width = 19 * cm_to_inch
+    # https://cdn.journals.aps.org/files/styleguide-pr.pdf
     onecol_height = 3
     # margins
-    labelsizes = {"PRD": 10.0,
+    labelsizes = {"APS": 10.0,
                   "APJ": 8.0,
+                  "Elsevier": 8.0,
+                  "Springer": 8.0,
                   "Presentation": 8.0,
                   "Notebook": 12.0}
-    fontsizes = {"PRD": 10.0,
+    fontsizes = {"APS": 10.0,
                  "APJ": 8.0,
+                 "Elsevier": 8.0,
+                 "Springer": 8.0,
                  "Presentation": 8.0,
                  "Notebook": 12.0}
-    figsizes = {"PRD": {"onecol": (onecol_width, onecol_height * nrows),
-                        "twocol": (twocol_width, onecol_height * nrows)},
-                "APJ": {"onecol": (onecol_width, onecol_height * nrows),
-                        "twocol": (twocol_width, onecol_height * nrows)},
+    figsizes = {"APS": {"onecol": (3.4, onecol_height * nrows),
+                        "twocol": (7.0, onecol_height * nrows)},
+                "APJ": {"onecol": (3.543, onecol_height * nrows),
+                        "twocol": (7.48, onecol_height * nrows)},
                 "Elsevier": {"onecol": (3.543, onecol_height * nrows),
                              "twocol": (7.48, onecol_height * nrows)},
                 "Springer": {"onecol": (3.3, onecol_height * nrows),
@@ -94,7 +103,8 @@ def set(journal="PRD",
                 "Notebook": {"onecol": (6, 4),
                              "twocol": (10, 4)}
                 }
-    journals = ["PRD", "APJ", "Presentation", "Notebook"]
+    journals = ["APS", "APJ", "Elsevier", "Springer", "Presentation",
+                "Notebook"]
     fig_types = ["onecol", "twocol"]
     if journal not in journals:
         print(f"--- Journal should be one of {journals} ---")

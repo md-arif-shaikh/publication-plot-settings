@@ -25,7 +25,7 @@
     import plotsettings as plts
 
     x = np.arange(-np.pi, np.pi, 0.01)
-    fig, ax = plts.set("PRD", left=0.2)
+    fig, ax = plts.set("APS", left=0.17)
     for idx in range(5):
 	ax.plot(x, np.sin(x + idx), label=r"$i = %.f$" % idx)
     ax.set_xlabel(r"$\theta$")
@@ -35,3 +35,9 @@
     fig.savefig("./figs/PRD.pdf")
   #+END_SRC
 [[./figs/PRD.png]]
+
+* References
+  - APS: https://cdn.journals.aps.org/files/styleguide-pr.pdf
+  - Elsevier: https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-sizing
+  - Springer: https://www.springer.com/authors/manuscript+guidelines?SGWID=0-40162-6-1414342-0
+  - Colors: https://jfly.uni-koeln.de/html/manuals/pdf/color_blind.pdf
