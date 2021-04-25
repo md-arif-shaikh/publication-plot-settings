@@ -67,6 +67,7 @@ def set(journal="PRD",
     # onecol_width = 4.2519699737097
     # onecol_height = 2.627861962896592
     # https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-sizing
+    # https://www.springer.com/authors/manuscript+guidelines?SGWID=0-40162-6-1414342-0
     cm_to_inch = 1/2.54
     onecol_width = 9 * cm_to_inch
     twocol_width = 19 * cm_to_inch
@@ -84,6 +85,10 @@ def set(journal="PRD",
                         "twocol": (twocol_width, onecol_height * nrows)},
                 "APJ": {"onecol": (onecol_width, onecol_height * nrows),
                         "twocol": (twocol_width, onecol_height * nrows)},
+                "Elsevier": {"onecol": (3.543, onecol_height * nrows),
+                             "twocol": (7.48, onecol_height * nrows)},
+                "Springer": {"onecol": (3.3, onecol_height * nrows),
+                             "twocol": (6.93, onecol_height * nrows)},
                 "Presentation": {"onecol": (3, 2),
                                  "twocol": (4.5, 2)},
                 "Notebook": {"onecol": (6, 4),
