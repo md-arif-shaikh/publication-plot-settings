@@ -66,8 +66,9 @@ def set(journal="PRD",
     # Figure size
     # onecol_width = 4.2519699737097
     # onecol_height = 2.627861962896592
-    onecol_width = 3.4  # (Phys Rev)
-    twocol_width = 7  # (Phys Rev)
+    cm_to_inch = 1/2.54
+    onecol_width = 9 * cm_to_inch
+    twocol_width = 19 * cm_to_inch
     onecol_height = 3
     # margins
     labelsizes = {"PRD": 10.0,
