@@ -37,20 +37,21 @@
     fig.savefig("../figs/APS.pdf")
   #+END_SRC
   - two column
-    #+BEGIN_SRC python
-      fig, ax = plts.set("APS", fig_type="twocol", left=0.1)
-      for idx in range(5):
-	  ax.plot(x, np.sin(x + idx), label=r"$i = %.f$" % idx)
-      ax.set_xlabel(r"$\theta$")
-      ax.set_ylabel(r"$\sin(\theta + i)$")
-      ax.legend(loc="upper left")
-      ax.grid()
-      fig.savefig("../figs/APS_twocol.pdf")
-    #+END_SRC
-  - See the pdf [[./examples/APS.pdf][APS]].
+  #+BEGIN_SRC python
+    fig, ax = plts.set("APS", fig_type="twocol", left=0.1)
+    for idx in range(5):
+	ax.plot(x, np.sin(x + idx), label=r"$i = %.f$" % idx)
+    ax.set_xlabel(r"$\theta$")
+    ax.set_ylabel(r"$\sin(\theta + i)$")
+    ax.legend(loc="upper left")
+    ax.grid()
+    fig.savefig("../figs/APS_twocol.pdf")
+  #+END_SRC
+  - See the [[./examples/APS.pdf][pdf]].
 
 * References
   - APS: https://cdn.journals.aps.org/files/styleguide-pr.pdf
   - Elsevier: https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-sizing
   - Springer: https://www.springer.com/authors/manuscript+guidelines?SGWID=0-40162-6-1414342-0
   - Colors: https://jfly.uni-koeln.de/html/manuals/pdf/color_blind.pdf
+    
