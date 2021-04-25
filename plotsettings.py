@@ -66,6 +66,7 @@ def set(journal="PRD",
     # Figure size
     # onecol_width = 4.2519699737097
     # onecol_height = 2.627861962896592
+    # https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-sizing
     cm_to_inch = 1/2.54
     onecol_width = 9 * cm_to_inch
     twocol_width = 19 * cm_to_inch
