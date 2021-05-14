@@ -1,6 +1,9 @@
 from matplotlib import rc
 from cycler import cycler
 import matplotlib.pyplot as plt
+from matplotlib import cm
+import matplotlib as mpl
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 # Axes
 rc("axes", linewidth=0.5)
@@ -129,3 +132,25 @@ def set(journal="APS",
 
     fig, ax = plt.subplots(nrows, ncols, sharex=sharex, sharey=sharey)
     return fig, ax
+
+
+def get_cmap(cmapString="RdYlBu"):
+    return cm.get_cmap(cmapString)
+
+
+def get_norm(vmin, vmax):
+    return mpl.colors.Normalize(vmin=vmin,
+                                vmax=vmax)
+
+
+def set_cbar(fig, ax, s, title,
+             loc="top",
+             size="2.5%",
+             pad="12%",
+             orientation="horizontal",
+             titlesize=7):
+    ax_divider = make_axes_locatable(ax)
+    cax = ax_divider.append_axes(loc, size=size, pad=pad)
+    cbar = fig.colorbar(s, cax=cax, orientation=orientation)
+    cbar.ax.set_title(title,
+                      size=titlesize)
