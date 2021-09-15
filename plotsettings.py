@@ -46,6 +46,10 @@ d3_catagory10 = cycler(
            "#8c564b", "#e377c2", "#7f7f7f"]  # , "#bcbd22", "#17becf"]
 )
 
+atom_one_dark = cycler(
+    color=["#61AFEF", "#E0657C", "#56B6C2", "#E5C07B", "#98C379", "#61AFEF", "#E0657C", "#56B6C2"]
+)
+
 # https://jfly.uni-koeln.de/html/manuals/pdf/color_blind.pdf
 easy_colors = cycler(
     color=["#E69F00", "#56B4E9", "#009E73",
@@ -57,7 +61,10 @@ line_style_cycler = cycler(
                (0, (3, 1, 1, 1, 1, 1)),
                (0, (3, 1, 1, 1)),  (0, (5, 1)), (0, (1, 1))])
 
-rc("axes", prop_cycle=d3_catagory10 + line_style_cycler)
+color_themes = {"atom": atom_one_dark,
+                "d3": d3_catagory10,
+                "easy": easy_colors,
+                "solarized": solarized}
 
 
 def set(journal="APS",
@@ -72,7 +79,8 @@ def set(journal="APS",
         top=0.95,
         wspace=0.0,
         hspace=0.0,
-        figsize=None):
+        figsize=None,
+        color_theme="atom"):
     # Figure size
     # onecol_width = 4.2519699737097
     # onecol_height = 2.627861962896592
@@ -130,6 +138,11 @@ def set(journal="APS",
     rc("figure.subplot", wspace=wspace)
     rc("figure.subplot", hspace=hspace)
 
+    if color_theme in color_themes.keys():
+        rc("axes", prop_cycle=color_themes[color_theme] + line_style_cycler)
+    else:
+        print(f"color themes should be one of {color_themes.keys()}")
+    
     fig, ax = plt.subplots(nrows, ncols, sharex=sharex, sharey=sharey)
     return fig, ax
 
